@@ -1,0 +1,10 @@
+langchain
+langgraph
+langchain_openai
+langchain_community
+streamlit
+faiss-cpu
+azure-identity
+azure-keyvault-secrets
+python-dotenv
+requests

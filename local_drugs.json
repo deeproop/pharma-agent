@@ -1,0 +1,50 @@
+[
+    {
+        "id": "drug-001",
+        "brand_name": "Tylenol",
+        "generic_name": "Acetaminophen",
+        "search_terms": "Tylenol Acetaminophen Paracetamol",
+        "active_ingredients": [
+            "Acetaminophen 500mg"
+        ],
+        "inactive_ingredients": [
+            "carnauba wax",
+            "corn starch",
+            "hypromellose",
+            "povidone",
+            "sodium starch glycolate"
+        ]
+    },
+    {
+        "id": "drug-002",
+        "brand_name": "Advil",
+        "generic_name": "Ibuprofen",
+        "search_terms": "Advil Ibuprofen Motrin",
+        "active_ingredients": [
+            "Ibuprofen 200mg"
+        ],
+        "inactive_ingredients": [
+            "colloidal silicon dioxide",
+            "corn starch",
+            "croscarmellose sodium",
+            "fd&c red no. 40",
+            "iron oxides"
+        ]
+    },
+    {
+        "id": "drug-003",
+        "brand_name": "Benadryl",
+        "generic_name": "Diphenhydramine",
+        "search_terms": "Benadryl Diphenhydramine Allergy Relief",
+        "active_ingredients": [
+            "Diphenhydramine HCl 25mg"
+        ],
+        "inactive_ingredients": [
+            "candelilla wax",
+            "crospovidone",
+            "dicalcium phosphate",
+            "hypromellose",
+            "microcrystalline cellulose"
+        ]
+    }
+]
