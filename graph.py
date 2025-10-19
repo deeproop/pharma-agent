@@ -6,217 +6,266 @@ from dotenv import load_dotenv
 from langgraph.graph import StateGraph, END
 from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
-from pydantic import BaseModel, Field       # <-- This line will now work
+from pydantic import BaseModel, Field
 from langchain_core.output_parsers import PydanticOutputParser
 
-# Import all our tools
-from tools import check_local_database, query_fda_api, find_alternative_drugs
+# --- Import all three data source tools ---
+from tools import check_local_database, query_fda_api, query_dailymed_api, web_search
 
 load_dotenv()
 
-# 1. Define the state (with new fields)
+# (GraphState, IngredientAnalysis, AlternativeDrugs, get_classification_chain, get_alternatives_chain remain the same)
+# ...
 class GraphState(TypedDict):
-    """
-    Represents the state of our graph.
-    
-    Attributes:
-        drug_name: The name of the drug to search for.
-        data: The structured data of the drug (active/inactive ingredients).
-        classification: Analysis of the ingredients (stretch goal).
-        alternatives: List of alternative drugs (stretch goal).
-        error: An error message if the drug is not found.
-    """
     drug_name: str
     data: Optional[dict]
     classification: Optional[dict]
     alternatives: Optional[List[str]]
     error: Optional[str]
 
-
-# --- NEW: Pydantic model for classification (Stretch Goal 1) ---
 class IngredientAnalysis(BaseModel):
     therapeutic_category: str = Field(description="The primary therapeutic category of the active ingredient.")
     common_allergens: List[str] = Field(description="A list of common allergens found in the inactive ingredients (e.g., 'corn starch', 'lactose', 'soy'). List 'None' if no common ones are found.")
 
-# --- NEW: Setup for classification node ---
+class AlternativeDrugs(BaseModel):
+    alternatives: List[str] = Field(description="A list of 3-5 alternative brand names.")
+
 def get_classification_chain():
     llm = AzureChatOpenAI(
         azure_deployment=os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT"),
-        api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
-        temperature=0
+        api_version=os.getenv("AZURE_OPENAI_API_VERSION")
     )
-    
     parser = PydanticOutputParser(pydantic_object=IngredientAnalysis)
-    
     prompt = ChatPromptTemplate.from_messages(
         [
-            ("system", "You are a helpful pharmacist assistant. Analyze the provided drug ingredients. Respond ONLY with the requested JSON format.\n{format_instructions}"),
-            ("user", "Please analyze the following drug:\nActive Ingredients: {active}\nInactive Ingredients: {inactive}")
+            ("system", "You are a helpful pharmacist assistant. Analyze the provided drug ingredients using the web search context. Respond ONLY with the requested JSON format.\n{format_instructions}"),
+            ("user", "Please analyze the following drug:\n\nWEB SEARCH CONTEXT:\n{context}\n\nDRUG INFO:\nActive Ingredients: {active}\nInactive Ingredients: {inactive}")
         ]
     ).partial(format_instructions=parser.get_format_instructions())
-    
+    return prompt | llm | parser
+
+def get_alternatives_chain():
+    llm = AzureChatOpenAI(
+        azure_deployment=os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT"),
+        api_version=os.getenv("AZURE_OPENAI_API_VERSION")
+    )
+    parser = PydanticOutputParser(pydantic_object=AlternativeDrugs)
+    prompt = ChatPromptTemplate.from_messages(
+        [
+            ("system", "You are a helpful research assistant. Based on the provided web search results, extract a list of alternative drug brand names. Respond ONLY with the requested JSON format.\n{format_instructions}"),
+            ("user", "Original Drug: {original_brand_name}\nActive Ingredient: {active_ingredient}\n\nWEB SEARCH RESULTS:\n{context}\n\nPlease list 3-5 alternative brand names. Do not include the original drug in the list.")
+        ]
+    ).partial(format_instructions=parser.get_format_instructions())
     return prompt | llm | parser
 
 classification_chain = get_classification_chain()
-
+alternatives_chain = get_alternatives_chain()
+# ...
 
 # 2. Define the nodes
+
+# (fetch_from_local, fetch_from_api are UNCHANGED)
 def fetch_from_local(state: GraphState) -> GraphState:
-    # (This node's code is unchanged)
     print("--- NODE: Checking local RAG database ---")
     drug_name = state['drug_name']
     result = check_local_database.invoke(drug_name)
-    
     if "error" in result:
         print("--- NODE: Not found locally. ---")
+        # Clear potential old data/error before next step
         return {"data": None, "error": None} 
     else:
         print("--- NODE: Found locally. ---")
         return {"data": result, "error": None}
 
 def fetch_from_api(state: GraphState) -> GraphState:
-    # (This node's code is unchanged)
     print("--- NODE: Checking external FDA API ---")
     drug_name = state['drug_name']
     result = query_fda_api.invoke(drug_name)
-    
     if "error" in result:
-        print("--- NODE: Not found in API. ---")
+        print(f"--- NODE: Not found or error in FDA API: {result['error']} ---")
+         # Clear potential old data before next step, keep error to signal failure
         return {"data": None, "error": result["error"]}
     else:
-        print("--- NODE: Found in API. ---")
+        print("--- NODE: Found in FDA API. ---")
         return {"data": result, "error": None}
 
+# --- NEW NODE for DailyMed ---
+def fetch_from_dailymed(state: GraphState) -> GraphState:
+    """
+    Node that calls the DailyMed API tool as a fallback.
+    """
+    print("--- NODE: Checking DailyMed API ---")
+    drug_name = state['drug_name']
+    result = query_dailymed_api.invoke(drug_name)
+    
+    if "error" in result:
+        print(f"--- NODE: Not found or error in DailyMed API: {result['error']} ---")
+        # Ensure data is cleared, set final error state
+        return {"data": None, "error": result["error"]} 
+    else:
+        print("--- NODE: Found in DailyMed API. ---")
+         # Clear any previous error state from FDA failure
+        return {"data": result, "error": None}
+
+# --- UPDATED handle_not_found node ---
 def handle_not_found(state: GraphState) -> GraphState:
-    # (This node's code is unchanged)
-    print("--- NODE: Handling 'Not Found' ---")
+    """
+    Node that formats the final "not found" message after checking all sources.
+    """
+    print("--- NODE: Handling 'Not Found' after checking all sources ---")
+    # Include the last error if available
+    last_error = state.get("error", "details unavailable")
     return {
         "data": None,
-        "error": f"Sorry, the drug '{state['drug_name']}' could not be found in local or external databases."
+        "error": f"Sorry, the drug '{state['drug_name']}' could not be found with ingredients in local DB, FDA, or DailyMed databases. Last error: {last_error}"
     }
 
-# --- NEW: Node for Stretch Goal 1 ---
+# (classify_ingredients, find_alternatives remain the same)
 def classify_ingredients(state: GraphState) -> GraphState:
-    """
-    Node that calls an LLM to classify ingredients.
-    """
-    print("--- NODE: Classifying ingredients ---")
-    if not state.get("data"):
-        return {} # Should not happen if graph is correct
-
+    print("--- NODE: Classifying ingredients (with web search) ---")
+    if not state.get("data"): return {}
     try:
-        active = state["data"].get("active_ingredients", [])
-        inactive = state["data"].get("inactive_ingredients", [])
-        
+        active_list = state["data"].get("active_ingredients", [])
+        inactive_list = state["data"].get("inactive_ingredients", [])
+        if not active_list or active_list == ["Not specified"]: 
+             return {"classification": {"error": "No valid active ingredient found to analyze."}}
+        active_ingredient = active_list[0]
+        search_query = f"therapeutic category and common allergens for {active_ingredient}"
+        search_context = web_search.invoke(search_query)
         response = classification_chain.invoke({
-            "active": ", ".join(active),
-            "inactive": ", ".join(inactive)
+            "context": search_context,
+            "active": ", ".join(active_list),
+            "inactive": ", ".join(inactive_list)
         })
-        
         return {"classification": response.dict()}
-    
     except Exception as e:
         print(f"--- NODE: Classification failed: {e} ---")
-        return {"classification": {"error": "Failed to analyze ingredients."}}
+        return {"classification": {"error": "Failed to analyze ingredients. Check Azure Chat Deployment."}}
 
-
-# --- NEW: Node for Stretch Goal 2 ---
 def find_alternatives(state: GraphState) -> GraphState:
-    """
-    Node that calls the tool to find alternative drugs.
-    """
-    print("--- NODE: Finding alternatives ---")
-    if not state.get("data"):
-        return {} # Should not happen
-
+    print("--- NODE: Finding alternatives (with web search) ---")
+    if not state.get("data"): return {}
     try:
         original_brand_name = state["data"].get("brand_name")
         active_ingredient_list = state["data"].get("active_ingredients", [])
-        
-        if not active_ingredient_list:
+        if not active_ingredient_list or active_ingredient_list == ["Not specified"]:
             return {"alternatives": []}
-            
-        # Use the first active ingredient
-        active_ingredient = active_ingredient_list[0]
-        
-        alts = find_alternative_drugs.invoke({
+        active_ingredient = re.split(r'(\d| HCl)', active_ingredient_list[0], 1)[0].strip()
+        search_query = f"alternative brand names for {active_ingredient}"
+        search_context = web_search.invoke(search_query)
+        response = alternatives_chain.invoke({
+            "original_brand_name": original_brand_name,
             "active_ingredient": active_ingredient,
-            "original_brand_name": original_brand_name
+            "context": search_context
         })
-        
-        return {"alternatives": alts}
-
+        # Filter out the original name if the LLM includes it
+        filtered_alts = [alt for alt in response.alternatives if alt.lower() != original_brand_name.lower()]
+        return {"alternatives": filtered_alts}
     except Exception as e:
         print(f"--- NODE: Finding alternatives failed: {e} ---")
         return {"alternatives": []}
 
-
 # 3. Define the conditional edges
+
+# (should_query_api remains the same)
 def should_query_api(state: GraphState) -> str:
-    # (This edge's logic is unchanged)
     print("--- CONDITIONAL EDGE: should_query_api ---")
     if state["data"]:
         print("--- DECISION: Data found locally, processing results. ---")
-        return "process_results" # <-- CHANGED
+        return "process_results" 
     else:
-        print("--- DECISION: No data found, querying API. ---")
-        return "query_api"
+        print("--- DECISION: No data found, querying FDA API. ---")
+        return "query_fda_api" # <-- Renamed target slightly for clarity
 
+# --- UPDATED check_api_results edge ---
 def check_api_results(state: GraphState) -> str:
-    # (This edge's logic is unchanged)
-    print("--- CONDITIONAL EDGE: check_api_results ---")
-    if state["error"]:
-        print("--- DECISION: API returned an error, handling. ---")
-        return "handle_error"
+    """
+    Conditional edge: If FDA API succeeded, process. If failed, try DailyMed.
+    """
+    print("--- CONDITIONAL EDGE: check_fda_api_results ---")
+    # Success is defined as having data AND that data not being just placeholders
+    data = state.get("data")
+    has_active = data and data.get("active_ingredients") and data.get("active_ingredients") != ["Not specified"]
+    has_inactive = data and data.get("inactive_ingredients") and data.get("inactive_ingredients") != ["Not specified"]
+
+    if data and (has_active or has_inactive):
+        print("--- DECISION: FDA API returned data, processing results. ---")
+        return "process_results"
     else:
-        print("--- DECISION: API returned data, processing results. ---")
-        return "process_results" # <-- CHANGED
+        print("--- DECISION: FDA API failed or returned no ingredients, trying DailyMed. ---")
+        # Clear error state from FDA before trying DailyMed
+        state["error"] = None 
+        return "query_dailymed_api" # <-- Go to the new node
+
+# --- NEW check_dailymed_results edge ---
+def check_dailymed_results(state: GraphState) -> str:
+    """
+    Conditional edge: If DailyMed succeeded, process. If failed, handle error.
+    """
+    print("--- CONDITIONAL EDGE: check_dailymed_results ---")
+    data = state.get("data")
+    has_active = data and data.get("active_ingredients") and data.get("active_ingredients") != ["Not specified"]
+    has_inactive = data and data.get("inactive_ingredients") and data.get("inactive_ingredients") != ["Not specified"]
+
+    if data and (has_active or has_inactive):
+        print("--- DECISION: DailyMed API returned data, processing results. ---")
+        return "process_results"
+    else:
+        print("--- DECISION: DailyMed API failed or returned no ingredients, handling final error. ---")
+        return "handle_error"
 
 
 # 4. Assemble the graph
 def create_graph():
     workflow = StateGraph(GraphState)
 
-    # Add the nodes (original + new)
+    # Add the nodes (original + new DailyMed node)
     workflow.add_node("check_local_rag", fetch_from_local)
-    workflow.add_node("query_external_api", fetch_from_api)
+    workflow.add_node("query_fda_api", fetch_from_api)
+    workflow.add_node("query_dailymed_api", fetch_from_dailymed) # <-- NEW
     workflow.add_node("handle_not_found", handle_not_found)
-    workflow.add_node("classify_ingredients", classify_ingredients) # <-- NEW
-    workflow.add_node("find_alternatives", find_alternatives)       # <-- NEW
+    workflow.add_node("classify_ingredients", classify_ingredients) 
+    workflow.add_node("find_alternatives", find_alternatives)       
 
-    # Set the entry point
     workflow.set_entry_point("check_local_rag")
 
-    # Add the conditional edges
+    # Edge from local check
     workflow.add_conditional_edges(
         "check_local_rag",
         should_query_api,
         {
-            "process_results": "classify_ingredients", # <-- CHANGED
-            "query_api": "query_external_api"
+            "process_results": "classify_ingredients", 
+            "query_fda_api": "query_fda_api" # <-- Use specific node name
         }
     )
     
+    # --- UPDATED Edge from FDA check ---
     workflow.add_conditional_edges(
-        "query_external_api",
-        check_api_results,
+        "query_fda_api", # Source node is FDA API call
+        check_api_results, # Decision function
         {
-            "process_results": "classify_ingredients", # <-- CHANGED
-            "handle_error": "handle_not_found"
+            "process_results": "classify_ingredients", # Success -> process
+            "query_dailymed_api": "query_dailymed_api"  # Failure -> try DailyMed
         }
     )
 
-    # Add the new sequential edges for stretch goals
+    # --- NEW Edge from DailyMed check ---
+    workflow.add_conditional_edges(
+        "query_dailymed_api", # Source node is DailyMed API call
+        check_dailymed_results, # Decision function
+        {
+            "process_results": "classify_ingredients", # Success -> process
+            "handle_error": "handle_not_found"         # Failure -> handle final error
+        }
+    )
+
+    # Sequential edges for processing and final error handling
     workflow.add_edge("classify_ingredients", "find_alternatives")
     workflow.add_edge("find_alternatives", END)
-
-    # Add a final edge from the error handler to the end
     workflow.add_edge("handle_not_found", END)
 
-    # Compile the graph
     app = workflow.compile()
-    print("--- Graph compiled successfully with stretch goals! ---")
+    print("--- Graph compiled successfully with DailyMed fallback! ---")
     return app
 
-# Expose the compiled app for the Streamlit UI
 app = create_graph()

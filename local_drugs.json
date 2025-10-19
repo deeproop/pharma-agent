@@ -46,5 +46,101 @@
             "hypromellose",
             "microcrystalline cellulose"
         ]
+    },
+    {
+        "id": "drug-004",
+        "brand_name": "Lipitor",
+        "generic_name": "Atorvastatin",
+        "search_terms": "Lipitor Atorvastatin Cholesterol Statin",
+        "active_ingredients": [
+            "Atorvastatin calcium"
+        ],
+        "inactive_ingredients": [
+            "calcium carbonate",
+            "candelilla wax",
+            "croscarmellose sodium",
+            "hydroxypropyl cellulose",
+            "lactose monohydrate",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "polysorbate 80",
+            "talc",
+            "titanium dioxide"
+        ]
+    },
+    {
+        "id": "drug-005",
+        "brand_name": "Zoloft",
+        "generic_name": "Sertraline",
+        "search_terms": "Zoloft Sertraline Antidepressant SSRI",
+        "active_ingredients": [
+            "Sertraline hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "dibasic calcium phosphate dihydrate",
+            "D&C Yellow No. 10 aluminum lake",
+            "FD&C Blue No. 1 aluminum lake",
+            "FD&C Red No. 40 aluminum lake",
+            "hypromellose",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "polysorbate 80",
+            "sodium starch glycolate",
+            "titanium dioxide"
+        ]
+    },
+    {
+        "id": "drug-006",
+        "brand_name": "Metformin",
+        "generic_name": "Metformin Hydrochloride",
+        "search_terms": "Metformin Glucophage Diabetes",
+        "active_ingredients": [
+            "Metformin hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "hypromellose",
+            "magnesium stearate",
+            "povidone"
+        ]
+    },
+    {
+        "id": "drug-007",
+        "brand_name": "Amoxicillin",
+        "generic_name": "Amoxicillin",
+        "search_terms": "Amoxicillin Amoxil Antibiotic Penicillin",
+        "active_ingredients": [
+            "Amoxicillin trihydrate"
+        ],
+        "inactive_ingredients": [
+            "colloidal silicon dioxide",
+            "crospovidone",
+            "ethylcellulose aqueous dispersion",
+            "hypromellose",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "polyethylene glycol",
+            "sodium lauryl sulfate",
+            "sodium starch glycolate",
+            "talc",
+            "titanium dioxide"
+        ]
+    },
+    {
+        "id": "drug-008",
+        "brand_name": "Synthroid",
+        "generic_name": "Levothyroxine",
+        "search_terms": "Synthroid Levothyroxine Thyroid Hormone",
+        "active_ingredients": [
+            "Levothyroxine sodium"
+        ],
+        "inactive_ingredients": [
+            "acacia",
+            "confectioner’s sugar (contains corn starch)",
+            "FD&C Yellow No. 6 Aluminum Lake",
+            "lactose monohydrate",
+            "magnesium stearate",
+            "povidone",
+            "talc"
+        ]
     }
 ]
