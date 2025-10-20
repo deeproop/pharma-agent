@@ -77,7 +77,7 @@ if user_input:
                     st.info("Analysis was not performed.")
                 
                 # --- NEW: Display Alternatives ---
-                st.markdown("#### 🔄 Suggested Alternatives (from local DB)")
+                st.markdown("#### 🔄 Suggested Alternatives")
                 alternatives = final_state.get("alternatives")
                 if alternatives:
                     for alt in alternatives:

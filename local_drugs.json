@@ -142,5 +142,849 @@
             "povidone",
             "talc"
         ]
+    },
+    {
+        "id": "drug-009",
+        "brand_name": "Prozac",
+        "generic_name": "Fluoxetine",
+        "search_terms": "Prozac Fluoxetine Antidepressant SSRI",
+        "active_ingredients": [
+            "Fluoxetine hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "starch",
+            "gelatin",
+            "silicone",
+            "titanium dioxide",
+            "iron oxide",
+            "FD&C Blue No. 1"
+        ]
+    },
+    {
+        "id": "drug-010",
+        "brand_name": "Xanax",
+        "generic_name": "Alprazolam",
+        "search_terms": "Xanax Alprazolam Anxiety Benzodiazepine",
+        "active_ingredients": [
+            "Alprazolam"
+        ],
+        "inactive_ingredients": [
+            "cellulose",
+            "corn starch",
+            "docusate sodium",
+            "lactose",
+            "magnesium stearate",
+            "silicon dioxide",
+            "sodium benzoate"
+        ]
+    },
+    {
+        "id": "drug-011",
+        "brand_name": "Singulair",
+        "generic_name": "Montelukast",
+        "search_terms": "Singulair Montelukast Asthma Allergies Leukotriene inhibitor",
+        "active_ingredients": [
+            "Montelukast sodium"
+        ],
+        "inactive_ingredients": [
+            "hydroxypropyl cellulose",
+            "hypromellose",
+            "iron oxide red",
+            "iron oxide yellow",
+            "lactose monohydrate",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "titanium dioxide",
+            "carnauba wax"
+        ]
+    },
+    {
+        "id": "drug-012",
+        "brand_name": "Plavix",
+        "generic_name": "Clopidogrel",
+        "search_terms": "Plavix Clopidogrel Antiplatelet Blood thinner",
+        "active_ingredients": [
+            "Clopidogrel bisulfate"
+        ],
+        "inactive_ingredients": [
+            "hydrogenated castor oil",
+            "hydroxypropyl cellulose",
+            "hypromellose",
+            "iron oxide red",
+            "lactose monohydrate",
+            "microcrystalline cellulose",
+            "polyethylene glycol 6000",
+            "pregelatinized starch",
+            "titanium dioxide",
+            "triacetin"
+        ]
+    },
+    {
+        "id": "drug-013",
+        "brand_name": "Viagra",
+        "generic_name": "Sildenafil",
+        "search_terms": "Viagra Sildenafil Erectile dysfunction PDE5 inhibitor",
+        "active_ingredients": [
+            "Sildenafil citrate"
+        ],
+        "inactive_ingredients": [
+            "microcrystalline cellulose",
+            "anhydrous dibasic calcium phosphate",
+            "croscarmellose sodium",
+            "magnesium stearate",
+            "hypromellose",
+            "titanium dioxide",
+            "lactose",
+            "triacetin",
+            "FD&C Blue No. 2 aluminum lake"
+        ]
+    },
+    {
+        "id": "drug-014",
+        "brand_name": "Crestor",
+        "generic_name": "Rosuvastatin",
+        "search_terms": "Crestor Rosuvastatin Cholesterol Statin",
+        "active_ingredients": [
+            "Rosuvastatin calcium"
+        ],
+        "inactive_ingredients": [
+            "microcrystalline cellulose",
+            "lactose monohydrate",
+            "tribasic calcium phosphate",
+            "crospovidone",
+            "magnesium stearate",
+            "hypromellose",
+            "triacetin",
+            "titanium dioxide",
+            "yellow ferric oxide",
+            "red ferric oxide"
+        ]
+    },
+    {
+        "id": "drug-015",
+        "brand_name": "Nexium",
+        "generic_name": "Esomeprazole",
+        "search_terms": "Nexium Esomeprazole Acid reflux GERD PPI Proton pump inhibitor",
+        "active_ingredients": [
+            "Esomeprazole magnesium"
+        ],
+        "inactive_ingredients": [
+            "glyceryl monostearate",
+            "hydroxypropyl cellulose",
+            "hypromellose",
+            "magnesium stearate",
+            "methacrylic acid copolymer dispersion",
+            "polysorbate 80",
+            "sugar spheres (sucrose and corn starch)",
+            "talc",
+            "titanium dioxide",
+            "triethyl citrate"
+        ]
+    },
+    {
+        "id": "drug-016",
+        "brand_name": "Lexapro",
+        "generic_name": "Escitalopram",
+        "search_terms": "Lexapro Escitalopram Antidepressant SSRI Anxiety",
+        "active_ingredients": [
+            "Escitalopram oxalate"
+        ],
+        "inactive_ingredients": [
+            "talc",
+            "croscarmellose sodium",
+            "microcrystalline cellulose",
+            "colloidal silicon dioxide",
+            "magnesium stearate",
+            "hypromellose",
+            "titanium dioxide",
+            "macrogol 400"
+        ]
+    },
+    {
+        "id": "drug-017",
+        "brand_name": "Ventolin HFA",
+        "generic_name": "Albuterol",
+        "search_terms": "Ventolin Albuterol Salbutamol Asthma Inhaler Bronchodilator",
+        "active_ingredients": [
+            "Albuterol sulfate"
+        ],
+        "inactive_ingredients": [
+            "propellant HFA-134a (1,1,1,2-tetrafluoroethane)"
+        ]
+    },
+    {
+        "id": "drug-018",
+        "brand_name": "Zyrtec",
+        "generic_name": "Cetirizine",
+        "search_terms": "Zyrtec Cetirizine Allergy Antihistamine Hay fever",
+        "active_ingredients": [
+            "Cetirizine HCl"
+        ],
+        "inactive_ingredients": [
+            "colloidal silicon dioxide",
+            "croscarmellose sodium",
+            "hypromellose",
+            "lactose monohydrate",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "polyethylene glycol",
+            "titanium dioxide"
+        ]
+    },
+    {
+        "id": "drug-019",
+        "brand_name": "Coumadin",
+        "generic_name": "Warfarin",
+        "search_terms": "Coumadin Warfarin Anticoagulant Blood thinner",
+        "active_ingredients": [
+            "Warfarin sodium"
+        ],
+        "inactive_ingredients": [
+            "lactose",
+            "starch",
+            "magnesium stearate",
+            "various dyes depending on strength"
+        ]
+    },
+    {
+        "id": "drug-020",
+        "brand_name": "Norvasc",
+        "generic_name": "Amlodipine",
+        "search_terms": "Norvasc Amlodipine High blood pressure Calcium channel blocker",
+        "active_ingredients": [
+            "Amlodipine besylate"
+        ],
+        "inactive_ingredients": [
+            "microcrystalline cellulose",
+            "dibasic calcium phosphate anhydrous",
+            "sodium starch glycolate",
+            "magnesium stearate"
+        ]
+    },
+    {
+        "id": "drug-021",
+        "brand_name": "Ambien",
+        "generic_name": "Zolpidem",
+        "search_terms": "Ambien Zolpidem Sleep aid Insomnia Hypnotic",
+        "active_ingredients": [
+            "Zolpidem tartrate"
+        ],
+        "inactive_ingredients": [
+            "hydroxypropyl methylcellulose",
+            "lactose",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "polyethylene glycol",
+            "sodium starch glycolate",
+            "titanium dioxide",
+            "FD&C Red No. 40",
+            "iron oxide colorant",
+            "polysorbate 80"
+        ]
+    },
+    {
+        "id": "drug-022",
+        "brand_name": "Prednisone",
+        "generic_name": "Prednisone",
+        "search_terms": "Prednisone Deltasone Corticosteroid Steroid Anti-inflammatory",
+        "active_ingredients": [
+            "Prednisone"
+        ],
+        "inactive_ingredients": [
+            "colloidal silicon dioxide",
+            "lactose monohydrate",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "sodium starch glycolate"
+        ]
+    },
+    {
+        "id": "drug-023",
+        "brand_name": "Wellbutrin XL",
+        "generic_name": "Bupropion",
+        "search_terms": "Wellbutrin Bupropion Antidepressant Smoking cessation NDRI",
+        "active_ingredients": [
+            "Bupropion hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "ethylcellulose aqueous dispersion",
+            "glyceryl behenate",
+            "methacrylic acid copolymer dispersion",
+            "polyvinyl alcohol",
+            "polyethylene glycol",
+            "povidone",
+            "silicon dioxide",
+            "triethyl citrate",
+            "FD&C Blue No. 2 Lake",
+            "synthetic black iron oxide"
+        ]
+    },
+    {
+        "id": "drug-024",
+        "brand_name": "Claritin",
+        "generic_name": "Loratadine",
+        "search_terms": "Claritin Loratadine Allergy Antihistamine Hay fever",
+        "active_ingredients": [
+            "Loratadine"
+        ],
+        "inactive_ingredients": [
+            "corn starch",
+            "lactose monohydrate",
+            "magnesium stearate"
+        ]
+    },
+    {
+        "id": "drug-025",
+        "brand_name": "Prilosec",
+        "generic_name": "Omeprazole",
+        "search_terms": "Prilosec Omeprazole Acid reflux GERD PPI Proton pump inhibitor",
+        "active_ingredients": [
+            "Omeprazole magnesium"
+        ],
+        "inactive_ingredients": [
+            "glyceryl monostearate",
+            "hydroxypropyl cellulose",
+            "hypromellose",
+            "iron oxide",
+            "magnesium stearate",
+            "methacrylic acid copolymer",
+            "microcrystalline cellulose",
+            "paraffin",
+            "polyethylene glycol 6000",
+            "polysorbate 80",
+            "polyvinylpyrrolidone",
+            "sodium stearyl fumarate",
+            "starch",
+            "sugar sphere",
+            "talc",
+            "titanium dioxide",
+            "triethyl citrate"
+        ]
+    },
+    {
+        "id": "drug-026",
+        "brand_name": "Cymbalta",
+        "generic_name": "Duloxetine",
+        "search_terms": "Cymbalta Duloxetine Antidepressant SNRI Nerve pain Fibromyalgia",
+        "active_ingredients": [
+            "Duloxetine hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "FD&C Blue No. 2",
+            "gelatin",
+            "hypromellose",
+            "hydroxypropyl methylcellulose acetate succinate",
+            "sodium lauryl sulfate",
+            "sucrose",
+            "sugar spheres",
+            "talc",
+            "titanium dioxide",
+            "triethyl citrate"
+        ]
+    },
+    {
+        "id": "drug-027",
+        "brand_name": "Klonopin",
+        "generic_name": "Clonazepam",
+        "search_terms": "Klonopin Clonazepam Anxiety Seizures Benzodiazepine",
+        "active_ingredients": [
+            "Clonazepam"
+        ],
+        "inactive_ingredients": [
+            "lactose",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "corn starch"
+        ]
+    },
+    {
+        "id": "drug-028",
+        "brand_name": "Neurontin",
+        "generic_name": "Gabapentin",
+        "search_terms": "Neurontin Gabapentin Nerve pain Seizures Anticonvulsant",
+        "active_ingredients": [
+            "Gabapentin"
+        ],
+        "inactive_ingredients": [
+            "candelilla wax",
+            "copovidone",
+            "cornstarch",
+            "hydroxypropyl cellulose",
+            "magnesium stearate",
+            "poloxamer 407",
+            "talc"
+        ]
+    },
+    {
+        "id": "drug-029",
+        "brand_name": "Flonase",
+        "generic_name": "Fluticasone Propionate",
+        "search_terms": "Flonase Fluticasone Allergy Nasal spray Corticosteroid",
+        "active_ingredients": [
+            "Fluticasone propionate"
+        ],
+        "inactive_ingredients": [
+            "benzalkonium chloride",
+            "carboxymethylcellulose sodium",
+            "dextrose",
+            "microcrystalline cellulose",
+            "phenylethyl alcohol",
+            "polysorbate 80",
+            "purified water"
+        ]
+    },
+    {
+        "id": "drug-030",
+        "brand_name": "Celebrex",
+        "generic_name": "Celecoxib",
+        "search_terms": "Celebrex Celecoxib Pain Arthritis NSAID COX-2 inhibitor",
+        "active_ingredients": [
+            "Celecoxib"
+        ],
+        "inactive_ingredients": [
+            "croscarmellose sodium",
+            "FD&C Blue No. 2",
+            "gelatin",
+            "lactose monohydrate",
+            "magnesium stearate",
+            "povidone",
+            "sodium lauryl sulfate",
+            "titanium dioxide"
+        ]
+    },
+    {
+        "id": "drug-031",
+        "brand_name": "Lasix",
+        "generic_name": "Furosemide",
+        "search_terms": "Lasix Furosemide Diuretic Water pill Edema High blood pressure",
+        "active_ingredients": [
+            "Furosemide"
+        ],
+        "inactive_ingredients": [
+            "lactose monohydrate",
+            "magnesium stearate",
+            "pregelatinized starch",
+            "starch"
+        ]
+    },
+    {
+        "id": "drug-032",
+        "brand_name": "Januvia",
+        "generic_name": "Sitagliptin",
+        "search_terms": "Januvia Sitagliptin Diabetes DPP-4 inhibitor",
+        "active_ingredients": [
+            "Sitagliptin phosphate"
+        ],
+        "inactive_ingredients": [
+            "microcrystalline cellulose",
+            "anhydrous dibasic calcium phosphate",
+            "croscarmellose sodium",
+            "magnesium stearate",
+            "sodium stearyl fumarate",
+            "polyvinyl alcohol",
+            "polyethylene glycol",
+            "talc",
+            "titanium dioxide",
+            "red iron oxide",
+            "yellow iron oxide"
+        ]
+    },
+    {
+        "id": "drug-033",
+        "brand_name": "Lyrica",
+        "generic_name": "Pregabalin",
+        "search_terms": "Lyrica Pregabalin Nerve pain Fibromyalgia Seizures Anticonvulsant",
+        "active_ingredients": [
+            "Pregabalin"
+        ],
+        "inactive_ingredients": [
+            "lactose monohydrate",
+            "cornstarch",
+            "talc",
+            "gelatin",
+            "titanium dioxide",
+            "FD&C Blue No. 1",
+            "FD&C Red No. 28",
+            "FD&C Red No. 40",
+            "black iron oxide"
+        ]
+    },
+    {
+        "id": "drug-034",
+        "brand_name": "Valium",
+        "generic_name": "Diazepam",
+        "search_terms": "Valium Diazepam Anxiety Seizures Muscle relaxant Benzodiazepine",
+        "active_ingredients": [
+            "Diazepam"
+        ],
+        "inactive_ingredients": [
+            "anhydrous lactose",
+            "corn starch",
+            "pregelatinized starch",
+            "calcium stearate",
+            "FD&C Blue No. 1",
+            "D&C Yellow No. 10"
+        ]
+    },
+    {
+        "id": "drug-035",
+        "brand_name": "Cialis",
+        "generic_name": "Tadalafil",
+        "search_terms": "Cialis Tadalafil Erectile dysfunction PDE5 inhibitor BPH",
+        "active_ingredients": [
+            "Tadalafil"
+        ],
+        "inactive_ingredients": [
+            "croscarmellose sodium",
+            "hydroxypropyl cellulose",
+            "hypromellose",
+            "iron oxide",
+            "lactose monohydrate",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "sodium lauryl sulfate",
+            "talc",
+            "titanium dioxide",
+            "triacetin"
+        ]
+    },
+    {
+        "id": "drug-036",
+        "brand_name": "OxyContin",
+        "generic_name": "Oxycodone",
+        "search_terms": "OxyContin Oxycodone Pain relief Opioid Narcotic",
+        "active_ingredients": [
+            "Oxycodone hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "ammonio methacrylate copolymer",
+            "hypromellose",
+            "lactose monohydrate",
+            "magnesium stearate",
+            "povidone",
+            "stearic acid",
+            "talc",
+            "titanium dioxide",
+            "triacetin",
+            "various dyes"
+        ]
+    },
+    {
+        "id": "drug-037",
+        "brand_name": "Zantac",
+        "generic_name": "Ranitidine",
+        "search_terms": "Zantac Ranitidine Acid reflux Heartburn H2 blocker",
+        "active_ingredients": [
+            "Ranitidine hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "hypromellose",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "synthetic red iron oxide",
+            "titanium dioxide",
+            "triacetin"
+        ]
+    },
+    {
+        "id": "drug-038",
+        "brand_name": "Fosamax",
+        "generic_name": "Alendronate",
+        "search_terms": "Fosamax Alendronate Osteoporosis Bisphosphonate",
+        "active_ingredients": [
+            "Alendronate sodium"
+        ],
+        "inactive_ingredients": [
+            "cellulose",
+            "croscarmellose sodium",
+            "lactose",
+            "magnesium stearate"
+        ]
+    },
+    {
+        "id": "drug-039",
+        "brand_name": "Lopressor",
+        "generic_name": "Metoprolol",
+        "search_terms": "Lopressor Metoprolol High blood pressure Beta blocker",
+        "active_ingredients": [
+            "Metoprolol tartrate"
+        ],
+        "inactive_ingredients": [
+            "cellulose compounds",
+            "colloidal silicon dioxide",
+            "lactose",
+            "magnesium stearate",
+            "povidone",
+            "sodium starch glycolate",
+            "starch",
+            "stearic acid",
+            "titanium dioxide"
+        ]
+    },
+    {
+        "id": "drug-040",
+        "brand_name": "Effexor XR",
+        "generic_name": "Venlafaxine",
+        "search_terms": "Effexor Venlafaxine Antidepressant SNRI Anxiety",
+        "active_ingredients": [
+            "Venlafaxine hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "cellulose",
+            "ethylcellulose",
+            "gelatin",
+            "hypromellose",
+            "iron oxides",
+            "titanium dioxide"
+        ]
+    },
+    {
+        "id": "drug-041",
+        "brand_name": "Paxil",
+        "generic_name": "Paroxetine",
+        "search_terms": "Paxil Paroxetine Antidepressant SSRI Anxiety",
+        "active_ingredients": [
+            "Paroxetine hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "dibasic calcium phosphate dihydrate",
+            "hypromellose",
+            "magnesium stearate",
+            "polysorbate 80",
+            "sodium starch glycolate",
+            "titanium dioxide",
+            "various dyes"
+        ]
+    },
+    {
+        "id": "drug-042",
+        "brand_name": "Glucotrol XL",
+        "generic_name": "Glipizide",
+        "search_terms": "Glucotrol Glipizide Diabetes Sulfonylurea",
+        "active_ingredients": [
+            "Glipizide"
+        ],
+        "inactive_ingredients": [
+            "acetyltributyl citrate",
+            "hydroxypropyl methylcellulose",
+            "lactose",
+            "magnesium stearate",
+            "polyethylene glycol",
+            "polyethylene oxide",
+            "synthetic red iron oxide",
+            "titanium dioxide",
+            "sodium chloride"
+        ]
+    },
+    {
+        "id": "drug-043",
+        "brand_name": "Risperdal",
+        "generic_name": "Risperidone",
+        "search_terms": "Risperdal Risperidone Antipsychotic Schizophrenia Bipolar disorder",
+        "active_ingredients": [
+            "Risperidone"
+        ],
+        "inactive_ingredients": [
+            "colloidal silicon dioxide",
+            "hypromellose",
+            "lactose monohydrate",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "propylene glycol",
+            "sodium lauryl sulfate",
+            "sodium starch glycolate",
+            "talc",
+            "titanium dioxide",
+            "various dyes"
+        ]
+    },
+    {
+        "id": "drug-044",
+        "brand_name": "Adderall",
+        "generic_name": "Amphetamine/Dextroamphetamine",
+        "search_terms": "Adderall Amphetamine Dextroamphetamine ADHD Stimulant Narcolepsy",
+        "active_ingredients": [
+            "Dextroamphetamine saccharate",
+            "Amphetamine aspartate monohydrate",
+            "Dextroamphetamine sulfate",
+            "Amphetamine sulfate"
+        ],
+        "inactive_ingredients": [
+            "lactitol",
+            "microcrystalline cellulose",
+            "colloidal silicon dioxide",
+            "magnesium stearate",
+            "various dyes"
+        ]
+    },
+    {
+        "id": "drug-045",
+        "brand_name": "Imitrex",
+        "generic_name": "Sumatriptan",
+        "search_terms": "Imitrex Sumatriptan Migraine Triptan",
+        "active_ingredients": [
+            "Sumatriptan succinate"
+        ],
+        "inactive_ingredients": [
+            "croscarmellose sodium",
+            "dibasic calcium phosphate",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "sodium bicarbonate",
+            "hypromellose",
+            "titanium dioxide",
+            "triacetin"
+        ]
+    },
+    {
+        "id": "drug-046",
+        "brand_name": "Proventil HFA",
+        "generic_name": "Albuterol",
+        "search_terms": "Proventil Albuterol Salbutamol Asthma Inhaler Bronchodilator",
+        "active_ingredients": [
+            "Albuterol sulfate"
+        ],
+        "inactive_ingredients": [
+            "propellant HFA-134a",
+            "ethanol",
+            "oleic acid"
+        ]
+    },
+    {
+        "id": "drug-047",
+        "brand_name": "Ultram",
+        "generic_name": "Tramadol",
+        "search_terms": "Ultram Tramadol Pain relief Opioid Analgesic",
+        "active_ingredients": [
+            "Tramadol hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "colloidal silicon dioxide",
+            "corn starch",
+            "hypromellose",
+            "lactose",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "polyethylene glycol",
+            "polysorbate 80",
+            "sodium starch glycolate",
+            "titanium dioxide",
+            "iron oxide"
+        ]
+    },
+    {
+        "id": "drug-048",
+        "brand_name": "Voltaren Gel",
+        "generic_name": "Diclofenac",
+        "search_terms": "Voltaren Diclofenac Arthritis pain Topical NSAID Gel",
+        "active_ingredients": [
+            "Diclofenac sodium"
+        ],
+        "inactive_ingredients": [
+            "carbomer homopolymer type C",
+            "cocoyl caprylocaprate",
+            "fragrance",
+            "isopropyl alcohol",
+            "mineral oil",
+            "polyoxyl 20 cetostearyl ether",
+            "propylene glycol",
+            "purified water",
+            "strong ammonia solution"
+        ]
+    },
+    {
+        "id": "drug-049",
+        "brand_name": "Buspar",
+        "generic_name": "Buspirone",
+        "search_terms": "Buspar Buspirone Anxiety Anxiolytic",
+        "active_ingredients": [
+            "Buspirone hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "colloidal silicon dioxide",
+            "lactose monohydrate",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "sodium starch glycolate"
+        ]
+    },
+    {
+        "id": "drug-050",
+        "brand_name": "Diovan",
+        "generic_name": "Valsartan",
+        "search_terms": "Diovan Valsartan High blood pressure ARB Angiotensin II receptor blocker",
+        "active_ingredients": [
+            "Valsartan"
+        ],
+        "inactive_ingredients": [
+            "colloidal silicon dioxide",
+            "crospovidone",
+            "hypromellose",
+            "iron oxides",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "polyethylene glycol",
+            "titanium dioxide"
+        ]
+    },
+    {
+        "id": "drug-051",
+        "brand_name": "Hyzaar",
+        "generic_name": "Losartan/Hydrochlorothiazide",
+        "search_terms": "Hyzaar Losartan Hydrochlorothiazide High blood pressure ARB Diuretic",
+        "active_ingredients": [
+            "Losartan potassium",
+            "Hydrochlorothiazide"
+        ],
+        "inactive_ingredients": [
+            "hydroxypropyl cellulose",
+            "hypromellose",
+            "lactose hydrous",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "pregelatinized starch",
+            "D&C Yellow No. 10 Aluminum Lake",
+            "titanium dioxide"
+        ]
+    },
+    {
+        "id": "drug-052",
+        "brand_name": "Altace",
+        "generic_name": "Ramipril",
+        "search_terms": "Altace Ramipril High blood pressure ACE inhibitor",
+        "active_ingredients": [
+            "Ramipril"
+        ],
+        "inactive_ingredients": [
+            "hypromellose",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "pregelatinized starch",
+            "sodium bicarbonate",
+            "sodium stearyl fumarate",
+            "various dyes"
+        ]
+    },
+    {
+        "id": "drug-053",
+        "brand_name": "Desyrel",
+        "generic_name": "Trazodone",
+        "search_terms": "Desyrel Trazodone Antidepressant Sleep SARI",
+        "active_ingredients": [
+            "Trazodone hydrochloride"
+        ],
+        "inactive_ingredients": [
+            "dibasic calcium phosphate",
+            "ethylcellulose",
+            "gelatin",
+            "hypromellose",
+            "iron oxide",
+            "magnesium stearate",
+            "microcrystalline cellulose",
+            "polyethylene glycol",
+            "silicon dioxide",
+            "sodium starch glycolate",
+            "titanium dioxide"
+        ]
     }
 ]

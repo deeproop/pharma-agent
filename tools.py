@@ -43,7 +43,7 @@ def check_local_database(drug_name: str) -> dict:
         return {"error": "Drug not found in local database."}
 
     doc, score = results[0]
-    CONFIDENCE_THRESHOLD = 0.3 
+    CONFIDENCE_THRESHOLD = 0.55 
     
     if score < CONFIDENCE_THRESHOLD:
         print(f"--- TOOL: Found local match with score {score} ---")
@@ -90,94 +90,7 @@ def query_fda_api(drug_name: str) -> dict:
     except requests.exceptions.RequestException as e:
         print(f"--- TOOL: FDA API error: {e} ---")
         return {"error": f"API request failed: {e}"}
-        
-# --- NEW TOOL: Query NIH DailyMed ---
-@tool
-def query_dailymed_api(drug_name: str) -> dict:
-    """
-    Queries the NIH DailyMed API for a drug using its SPL ID and extracts 
-    active and inactive ingredients from the SPL data.
-    """
-    print(f"--- TOOL: Querying DailyMed API for '{drug_name}' ---")
-    
-    # 1. Search for the drug to get its SPL ID
-    search_url = f"https://dailymed.nlm.nih.gov/dailymed/services/v2/spls.json?drug_name={drug_name}&page_size=1&page=1"
-    try:
-        search_response = requests.get(search_url)
-        search_response.raise_for_status()
-        search_data = search_response.json()
-
-        # Check if the "data" key exists and contains a non-empty list
-        spl_list = search_data.get("data") 
-        if not spl_list: # Checks for None or empty list []
-            print("--- TOOL: Drug not found in DailyMed search (no data returned). ---")
-            return {"error": "Drug not found in DailyMed database."}
-
-        # Get the first result from the list and extract its spl_id
-        first_spl_result = spl_list[0] 
-        spl_id = first_spl_result.get("spl_id")
-
-        if not spl_id:
-            print("--- TOOL: Could not find SPL ID in DailyMed search result. ---")
-            return {"error": "SPL ID not found for drug in DailyMed."}
-
-        print(f"--- TOOL: Found SPL ID: {spl_id} ---")
-
-            
-        # 2. Fetch the SPL details using the SPL ID
-        spl_url = f"https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/{spl_id}.json"
-        spl_response = requests.get(spl_url)
-        spl_response.raise_for_status()
-        spl_data = spl_response.json()
-
-        # 3. Parse ingredients from SPL sections (This can be complex)
-        active_ingredients = []
-        inactive_ingredients = []
-        brand_name = spl_data.get("brand_name", drug_name) # Use provided name as fallback
-
-        if "spl_sections" in spl_data:
-            for section in spl_data["spl_sections"]:
-                title = section.get("title", "").upper()
-                text_content = section.get("text", "")
-                
-                # Simple parsing - look for keywords in titles
-                if "ACTIVE INGREDIENT" in title:
-                    # Often ingredients are listed directly in text or simple lists
-                    # This is a basic extraction, might need refinement
-                    lines = text_content.split('\n')
-                    for line in lines:
-                        if line.strip() and not line.strip().startswith(("Purpose", "Uses", "Warnings")):
-                             active_ingredients.append(line.strip())
-                             
-                elif "INACTIVE INGREDIENT" in title:
-                    # Often a comma-separated list or paragraphs
-                    lines = text_content.split('\n')
-                    for line in lines:
-                        parts = [part.strip() for part in line.split(',') if part.strip()]
-                        inactive_ingredients.extend(parts)
-
-        # Remove duplicates and clean up
-        active_ingredients = list(set(filter(None, active_ingredients)))
-        inactive_ingredients = list(set(filter(None, inactive_ingredients)))
-
-        if not active_ingredients and not inactive_ingredients:
-            print("--- TOOL: Found SPL, but failed to parse ingredients. ---")
-            return {"error": "Could not parse ingredients from DailyMed SPL data."}
-
-        print("--- TOOL: Successfully parsed ingredients from DailyMed. ---")
-        return {
-            "brand_name": brand_name,
-            "active_ingredients": active_ingredients if active_ingredients else ["Not specified"],
-            "inactive_ingredients": inactive_ingredients if inactive_ingredients else ["Not specified"]
-        }
-
-    except requests.exceptions.RequestException as e:
-        print(f"--- TOOL: DailyMed API error: {e} ---")
-        return {"error": f"DailyMed API request failed: {e}"}
-    except json.JSONDecodeError:
-        print("--- TOOL: DailyMed API returned invalid JSON. ---")
-        return {"error": "Failed to decode DailyMed API response."}
-        
+         
 
 # (web_search tool remains the same)
 # ...
