@@ -1,4 +1,3 @@
-# graph.py
 import os
 import re
 from typing import TypedDict, Optional, List
@@ -51,7 +50,6 @@ def get_classification_chain():
     llm = AzureChatOpenAI(
         azure_deployment=os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT"),
         api_version=os.getenv("AZURE_OPENAI_API_VERSION")
-        # Removed temperature=0 as it caused errors
     )
     parser = PydanticOutputParser(pydantic_object=IngredientAnalysis)
     prompt = ChatPromptTemplate.from_messages(
@@ -67,7 +65,6 @@ def get_alternatives_chain():
     llm = AzureChatOpenAI(
         azure_deployment=os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT"),
         api_version=os.getenv("AZURE_OPENAI_API_VERSION")
-        # Removed temperature=0 as it caused errors
     )
     parser = PydanticOutputParser(pydantic_object=AlternativeDrugs)
     prompt = ChatPromptTemplate.from_messages(

@@ -1,4 +1,3 @@
-# app.py
 import streamlit as st
 from graph import app # Import the compiled LangGraph app
 
@@ -10,7 +9,7 @@ Enter the name of a medication. The agent will check a local database (RAG), the
 If found, it will **classify the ingredients** and **suggest alternatives**.
 """)
 
-# (Your test buttons section is unchanged)
+# (test buttons section)
 st.subheader("Quick Tests (from local DB)")
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -35,7 +34,7 @@ with col6:
     if st.button("FakeDrug123"):
         st.session_state.drug_name = "FakeDrug123"
 
-# (Your user_input is unchanged)
+
 user_input = st.text_input("Or, enter any drug name:", key="drug_name")
 
 if user_input:
@@ -66,7 +65,7 @@ if user_input:
                 st.json(data.get("inactive_ingredients", "Not specified"))
             
             with col_analysis:
-                # --- NEW: Display Classification ---
+                # --- Display Classification ---
                 st.markdown("#### 🔬 Ingredient Analysis")
                 classification = final_state.get("classification")
                 if classification and "error" not in classification:
@@ -76,7 +75,7 @@ if user_input:
                 else:
                     st.info("Analysis was not performed.")
                 
-                # --- NEW: Display Alternatives ---
+                # --- Display Alternatives ---
                 st.markdown("#### 🔄 Suggested Alternatives")
                 alternatives = final_state.get("alternatives")
                 if alternatives:

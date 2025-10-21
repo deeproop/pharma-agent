@@ -1,8 +1,7 @@
-# tools.py
 import os
 import re
 import requests
-import json # <-- Make sure json is imported
+import json
 from dotenv import load_dotenv
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -99,7 +98,7 @@ def web_search(query: str) -> str:
     """
     Performs a web search using the Tavily Search API and returns results as a JSON string.
     """
-    import json # Make sure json is imported here or at the top
+    import json
     print(f"--- TOOL: Performing web search for '{query}' ---")
     search = TavilySearchAPIWrapper() 
     results_list = search.results(query=query, max_results=3)
