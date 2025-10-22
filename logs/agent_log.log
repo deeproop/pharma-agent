@@ -1,0 +1,29 @@
+2025-10-22 14:08:26,581 - INFO - app.py:36 - --- Logger Initialized ---
+2025-10-22 14:08:43,612 - INFO - app.py:78 - User searched for: 'Lipitor'
+2025-10-22 14:08:43,624 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-22 14:08:43,629 - INFO - graph.py:93 - Normalized 'Lipitor' to 'Atorvastatin'
+2025-10-22 14:08:43,650 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-22 14:08:43,656 - INFO - tools.py:47 - --- TOOL: Checking local DB for 'Atorvastatin' ---
+2025-10-22 14:08:46,824 - INFO - tools.py:60 - Found local match with score 0.39702606201171875
+2025-10-22 14:08:46,836 - INFO - graph.py:104 - Drug found locally.
+2025-10-22 14:08:46,840 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-22 14:08:46,841 - INFO - tools.py:125 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Atorvastatin calcium' ---
+2025-10-22 14:09:09,746 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-22 14:09:09,748 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-22 14:09:09,749 - INFO - tools.py:125 - --- TOOL: Performing web search for 'alternative brand names for Atorvastatin calcium' ---
+2025-10-22 14:09:21,197 - INFO - graph.py:184 - Found alternatives: ['Colestid', 'Tricor', 'Zetia', 'WelChol']
+2025-10-22 14:09:21,198 - INFO - app.py:87 - Graph execution finished for 'Lipitor'. Final State: {'drug_name': 'Atorvastatin', 'original_drug_name': 'Lipitor', 'data': {'id': 'drug-004', 'brand_name': 'Lipitor', 'generic_name': 'Atorvastatin', 'search_terms': 'Lipitor Atorvastatin Cholesterol Statin', 'active_ingredients': ['Atorvastatin calcium'], 'inactive_ingredients': ['calcium carbonate', 'candelilla wax', 'croscarmellose sodium', 'hydroxypropyl cellulose', 'lactose monohydrate', 'magnesium stearate', 'microcrystalline cellulose', 'polysorbate 80', 'talc', 'titanium dioxide']}, 'classification': {'therapeutic_category': 'Lipid-lowering agent (HMG-CoA reductase inhibitor — statin)', 'common_allergens': ['Lactose (milk-derived)', 'Polysorbate 80 (can cause hypersensitivity)']}, 'alternatives': ['Colestid', 'Tricor', 'Zetia', 'WelChol'], 'error': None}
+2025-10-22 14:09:34,517 - INFO - app.py:78 - User searched for: 'Paracetamol'
+2025-10-22 14:09:34,523 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-22 14:09:34,525 - INFO - graph.py:93 - Normalized 'Paracetamol' to 'Acetaminophen'
+2025-10-22 14:09:34,529 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-22 14:09:34,532 - INFO - tools.py:47 - --- TOOL: Checking local DB for 'Acetaminophen' ---
+2025-10-22 14:09:36,626 - INFO - tools.py:60 - Found local match with score 0.40804848074913025
+2025-10-22 14:09:36,627 - INFO - graph.py:104 - Drug found locally.
+2025-10-22 14:09:36,629 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-22 14:09:36,631 - INFO - tools.py:125 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Acetaminophen' ---
+2025-10-22 14:10:01,963 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-22 14:10:01,966 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-22 14:10:01,969 - INFO - tools.py:125 - --- TOOL: Performing web search for 'alternative brand names for Acetaminophen' ---
+2025-10-22 14:10:16,325 - INFO - graph.py:184 - Found alternatives: ['Panadol', 'Calpol', 'Excedrin', 'Alvedon', 'Ben-u-ron']
+2025-10-22 14:10:16,328 - INFO - app.py:87 - Graph execution finished for 'Paracetamol'. Final State: {'drug_name': 'Acetaminophen', 'original_drug_name': 'Paracetamol', 'data': {'id': 'drug-001', 'brand_name': 'Tylenol', 'generic_name': 'Acetaminophen', 'search_terms': 'Tylenol Acetaminophen Paracetamol', 'active_ingredients': ['Acetaminophen 500mg'], 'inactive_ingredients': ['carnauba wax', 'corn starch', 'hypromellose', 'povidone', 'sodium starch glycolate']}, 'classification': {'therapeutic_category': 'Non-opioid analgesic and antipyretic (acetaminophen)', 'common_allergens': ['Corn (corn starch)', 'Starch-derived excipient (sodium starch glycolate; may be sourced from corn/potato)', 'Povidone (rare hypersensitivity reported)']}, 'alternatives': ['Panadol', 'Calpol', 'Excedrin', 'Alvedon', 'Ben-u-ron'], 'error': None}
