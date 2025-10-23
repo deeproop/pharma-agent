@@ -180,3 +180,170 @@
 2025-10-22 20:15:21,100 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Acetaminophen' ---
 2025-10-22 20:15:30,471 - INFO - graph.py:184 - Found alternatives: ['Panadol', 'Excedrin', 'Calpol', 'PediaCare', 'Aceta']
 2025-10-22 20:15:30,472 - INFO - app.py:92 - Graph execution finished for 'paracetamol'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-22 21:24:09,362 - INFO - app.py:25 - --- Logger Initialized ---
+2025-10-22 21:24:17,283 - INFO - app.py:75 - Processing search for: 'aspirin'
+2025-10-22 21:24:17,284 - INFO - app.py:84 - Updated search history: ['aspirin']
+2025-10-22 21:24:17,290 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-22 21:24:17,292 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-22 21:24:17,294 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'aspirin' ---
+2025-10-22 21:24:23,157 - WARNING - tools.py:59 - Low confidence match (score: 1.0152987241744995). Ignoring.
+2025-10-22 21:24:23,158 - INFO - graph.py:101 - Drug not found locally.
+2025-10-22 21:24:23,159 - INFO - graph.py:108 - --- NODE: Checking external FDA API ---
+2025-10-22 21:24:23,161 - INFO - tools.py:71 - --- TOOL: Querying FDA API for 'aspirin' ---
+2025-10-22 21:24:27,394 - INFO - tools.py:115 - Found match for 'aspirin' in FDA API.
+2025-10-22 21:24:27,398 - INFO - graph.py:115 - Drug found in FDA API.
+2025-10-22 21:24:27,399 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-22 21:24:27,402 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:24:42,027 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-22 21:24:42,030 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-22 21:24:42,033 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:24:54,610 - INFO - graph.py:184 - Found alternatives: ['Bayer Aspirin', 'Bufferin', 'St. Joseph Aspirin for Adults', 'Aspro', 'Adiro']
+2025-10-22 21:24:54,612 - INFO - app.py:92 - Graph execution finished for 'aspirin'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-22 21:36:46,199 - INFO - app.py:26 - --- Logger Initialized ---
+2025-10-22 21:36:58,066 - INFO - app.py:82 - Processing search for: 'paracetamol'
+2025-10-22 21:36:58,068 - INFO - app.py:96 - Updated search history: ['paracetamol']
+2025-10-22 21:36:58,074 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-22 21:36:58,075 - INFO - graph.py:93 - Normalized 'paracetamol' to 'Acetaminophen'
+2025-10-22 21:36:58,079 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-22 21:36:58,081 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'Acetaminophen' ---
+2025-10-22 21:36:59,862 - INFO - tools.py:56 - Found local match with score 0.40804848074913025
+2025-10-22 21:36:59,862 - INFO - graph.py:104 - Drug found locally.
+2025-10-22 21:36:59,864 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-22 21:36:59,865 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Acetaminophen' ---
+2025-10-22 21:37:14,718 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-22 21:37:14,721 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-22 21:37:14,722 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Acetaminophen' ---
+2025-10-22 21:37:25,790 - INFO - graph.py:184 - Found alternatives: ['Panadol', 'Calpol', 'Excedrin', 'Alvedon', 'PediaCare']
+2025-10-22 21:37:25,793 - INFO - app.py:103 - Graph execution finished for 'paracetamol'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-22 21:37:34,126 - INFO - app.py:82 - Processing search for: 'paracetamol'
+2025-10-22 21:37:34,131 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-22 21:37:34,132 - INFO - graph.py:93 - Normalized 'paracetamol' to 'Acetaminophen'
+2025-10-22 21:37:34,137 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-22 21:37:34,139 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'Acetaminophen' ---
+2025-10-22 21:37:35,836 - INFO - tools.py:56 - Found local match with score 0.40804848074913025
+2025-10-22 21:37:35,836 - INFO - graph.py:104 - Drug found locally.
+2025-10-22 21:37:35,837 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-22 21:37:35,839 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Acetaminophen' ---
+2025-10-22 21:37:50,451 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-22 21:37:50,453 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-22 21:37:50,454 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Acetaminophen' ---
+2025-10-22 21:37:59,451 - INFO - graph.py:184 - Found alternatives: ['Panadol', 'Calpol', 'Alvedon', 'Ben-u-ron', 'Biogesic']
+2025-10-22 21:37:59,452 - INFO - app.py:103 - Graph execution finished for 'paracetamol'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-22 21:38:28,580 - INFO - app.py:82 - Processing search for: 'aspirin'
+2025-10-22 21:38:28,581 - INFO - app.py:96 - Updated search history: ['aspirin', 'paracetamol']
+2025-10-22 21:38:28,587 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-22 21:38:28,588 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-22 21:38:28,591 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'aspirin' ---
+2025-10-22 21:38:30,144 - WARNING - tools.py:59 - Low confidence match (score: 1.0152926445007324). Ignoring.
+2025-10-22 21:38:30,145 - INFO - graph.py:101 - Drug not found locally.
+2025-10-22 21:38:30,148 - INFO - graph.py:108 - --- NODE: Checking external FDA API ---
+2025-10-22 21:38:30,150 - INFO - tools.py:71 - --- TOOL: Querying FDA API for 'aspirin' ---
+2025-10-22 21:38:32,477 - INFO - tools.py:115 - Found match for 'aspirin' in FDA API.
+2025-10-22 21:38:32,480 - INFO - graph.py:115 - Drug found in FDA API.
+2025-10-22 21:38:32,482 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-22 21:38:32,484 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:38:56,634 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-22 21:38:56,636 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-22 21:38:56,637 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:39:07,457 - INFO - graph.py:184 - Found alternatives: ['Bayer Aspirin', 'Bufferin', 'Aspir-Low', 'Adiro', 'St. Joseph Aspirin for Adults']
+2025-10-22 21:39:07,459 - INFO - app.py:103 - Graph execution finished for 'aspirin'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-22 21:39:12,583 - INFO - app.py:82 - Processing search for: 'aspirin'
+2025-10-22 21:39:12,587 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-22 21:39:12,598 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-22 21:39:12,601 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'aspirin' ---
+2025-10-22 21:39:13,887 - WARNING - tools.py:59 - Low confidence match (score: 1.0152987241744995). Ignoring.
+2025-10-22 21:39:13,888 - INFO - graph.py:101 - Drug not found locally.
+2025-10-22 21:39:13,891 - INFO - graph.py:108 - --- NODE: Checking external FDA API ---
+2025-10-22 21:39:13,893 - INFO - tools.py:71 - --- TOOL: Querying FDA API for 'aspirin' ---
+2025-10-22 21:39:15,828 - INFO - tools.py:115 - Found match for 'aspirin' in FDA API.
+2025-10-22 21:39:15,831 - INFO - graph.py:115 - Drug found in FDA API.
+2025-10-22 21:39:15,832 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-22 21:39:15,834 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:39:30,281 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-22 21:39:30,282 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-22 21:39:30,283 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:39:39,753 - INFO - graph.py:184 - Found alternatives: ['Bayer Aspirin', 'Bufferin', 'St. Joseph Aspirin', 'Aspro', 'Easprin']
+2025-10-22 21:39:39,754 - INFO - app.py:103 - Graph execution finished for 'aspirin'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-22 21:40:38,697 - INFO - app.py:26 - --- Logger Initialized ---
+2025-10-22 21:40:45,377 - INFO - app.py:82 - Processing search for: 'aspirin'
+2025-10-22 21:40:45,379 - INFO - app.py:96 - Updated search history: ['aspirin']
+2025-10-22 21:40:45,387 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-22 21:40:45,390 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-22 21:40:45,392 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'aspirin' ---
+2025-10-22 21:40:47,164 - WARNING - tools.py:59 - Low confidence match (score: 1.0152926445007324). Ignoring.
+2025-10-22 21:40:47,165 - INFO - graph.py:101 - Drug not found locally.
+2025-10-22 21:40:47,166 - INFO - graph.py:108 - --- NODE: Checking external FDA API ---
+2025-10-22 21:40:47,168 - INFO - tools.py:71 - --- TOOL: Querying FDA API for 'aspirin' ---
+2025-10-22 21:40:49,658 - INFO - tools.py:115 - Found match for 'aspirin' in FDA API.
+2025-10-22 21:40:49,662 - INFO - graph.py:115 - Drug found in FDA API.
+2025-10-22 21:40:49,663 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-22 21:40:49,666 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:41:04,740 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-22 21:41:04,742 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-22 21:41:04,744 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:41:12,971 - INFO - graph.py:184 - Found alternatives: ['Bayer Aspirin', 'Bufferin', 'St. Joseph Aspirin', 'Empirin', 'Aspro']
+2025-10-22 21:41:12,972 - INFO - app.py:103 - Graph execution finished for 'aspirin'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-22 21:41:20,330 - INFO - app.py:82 - Processing search for: 'aspirin'
+2025-10-22 21:41:20,346 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-22 21:41:20,357 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-22 21:41:20,419 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'aspirin' ---
+2025-10-22 21:41:21,891 - WARNING - tools.py:59 - Low confidence match (score: 1.0152926445007324). Ignoring.
+2025-10-22 21:41:21,895 - INFO - graph.py:101 - Drug not found locally.
+2025-10-22 21:41:21,897 - INFO - graph.py:108 - --- NODE: Checking external FDA API ---
+2025-10-22 21:41:21,900 - INFO - tools.py:71 - --- TOOL: Querying FDA API for 'aspirin' ---
+2025-10-22 21:41:24,857 - INFO - tools.py:115 - Found match for 'aspirin' in FDA API.
+2025-10-22 21:41:24,860 - INFO - graph.py:115 - Drug found in FDA API.
+2025-10-22 21:41:24,862 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-22 21:41:24,863 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:41:40,930 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-22 21:41:40,932 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-22 21:41:40,934 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:41:49,804 - INFO - graph.py:184 - Found alternatives: ['Bayer Aspirin', 'Bufferin Low Dose', 'St. Joseph Aspirin for Adults', 'Adiro']
+2025-10-22 21:41:49,805 - INFO - app.py:103 - Graph execution finished for 'aspirin'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-22 21:41:55,604 - INFO - app.py:82 - Processing search for: 'aspirin'
+2025-10-22 21:41:55,612 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-22 21:41:55,626 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-22 21:41:55,629 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'aspirin' ---
+2025-10-22 21:41:57,480 - WARNING - tools.py:59 - Low confidence match (score: 1.0152926445007324). Ignoring.
+2025-10-22 21:41:57,481 - INFO - graph.py:101 - Drug not found locally.
+2025-10-22 21:41:57,483 - INFO - graph.py:108 - --- NODE: Checking external FDA API ---
+2025-10-22 21:41:57,484 - INFO - tools.py:71 - --- TOOL: Querying FDA API for 'aspirin' ---
+2025-10-22 21:41:59,329 - INFO - tools.py:115 - Found match for 'aspirin' in FDA API.
+2025-10-22 21:41:59,334 - INFO - graph.py:115 - Drug found in FDA API.
+2025-10-22 21:41:59,336 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-22 21:41:59,338 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:42:14,002 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-22 21:42:14,003 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-22 21:42:14,004 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Active ingredient (in each tablet) Aspirin' ---
+2025-10-22 21:42:22,595 - INFO - graph.py:184 - Found alternatives: ['Bayer Aspirin', 'Bufferin', 'St. Joseph', 'Aspro', 'Empirin']
+2025-10-22 21:42:22,597 - INFO - app.py:103 - Graph execution finished for 'aspirin'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-23 11:33:30,034 - INFO - app.py:26 - --- Logger Initialized ---
+2025-10-23 11:33:52,356 - INFO - app.py:82 - Processing search for: 'paracetamol'
+2025-10-23 11:33:52,357 - INFO - app.py:96 - Updated search history: ['paracetamol']
+2025-10-23 11:33:52,363 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-23 11:33:52,364 - INFO - graph.py:93 - Normalized 'paracetamol' to 'Acetaminophen'
+2025-10-23 11:33:52,366 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-23 11:33:52,368 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'Acetaminophen' ---
+2025-10-23 11:33:54,156 - INFO - tools.py:56 - Found local match with score 0.40804848074913025
+2025-10-23 11:33:54,157 - INFO - graph.py:104 - Drug found locally.
+2025-10-23 11:33:54,159 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-23 11:33:54,161 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Acetaminophen' ---
+2025-10-23 11:34:13,131 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-23 11:34:13,133 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-23 11:34:13,135 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Acetaminophen' ---
+2025-10-23 11:34:22,107 - INFO - graph.py:184 - Found alternatives: ['Panadol', 'Excedrin', 'Calpol', 'Mapap', 'FeverAll']
+2025-10-23 11:34:22,109 - INFO - app.py:103 - Graph execution finished for 'paracetamol'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-23 11:34:27,636 - INFO - app.py:82 - Processing search for: 'paracetamol'
+2025-10-23 11:34:27,641 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-23 11:34:27,648 - INFO - graph.py:93 - Normalized 'paracetamol' to 'Acetaminophen'
+2025-10-23 11:34:27,652 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-23 11:34:27,655 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'Acetaminophen' ---
+2025-10-23 11:34:29,107 - INFO - tools.py:56 - Found local match with score 0.40804848074913025
+2025-10-23 11:34:29,108 - INFO - graph.py:104 - Drug found locally.
+2025-10-23 11:34:29,109 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-23 11:34:29,112 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Acetaminophen' ---
+2025-10-23 11:34:42,643 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-23 11:34:42,645 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-23 11:34:42,646 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Acetaminophen' ---
+2025-10-23 11:34:52,094 - INFO - graph.py:184 - Found alternatives: ['Panadol', 'Excedrin', 'Mapap', 'Calpol', 'Alvedon']
+2025-10-23 11:34:52,095 - INFO - app.py:103 - Graph execution finished for 'paracetamol'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
