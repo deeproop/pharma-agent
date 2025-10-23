@@ -6,7 +6,6 @@ import os
 import sys
 
 # --- Configure Logging (Keep the existing logger setup) ---
-# ... (logging setup code remains the same) ...
 LOG_DIR = "logs"
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
@@ -45,13 +44,9 @@ if 'search_history' not in st.session_state:
     st.session_state.search_history = []
 if 'history_selectbox_value' not in st.session_state:
      st.session_state.history_selectbox_value = "Select from history..."
-# --- NEW State Variable for Alternatives Button ---
-if 'show_alternatives' not in st.session_state:
-    st.session_state.show_alternatives = False
-# -----------------------------------------------
+# Removed 'show_alternatives' state variable
 
 # --- Search History Dropdown ---
-# ... (history dropdown code remains the same) ...
 history_options = ["Select from history..."] + st.session_state.search_history
 
 def handle_history_selection():
@@ -69,7 +64,6 @@ st.selectbox(
     on_change=handle_history_selection,
 )
 
-
 # --- Main Search Bar ---
 user_input = st.text_input(
     "**Search for a drug name and press Enter:**",
@@ -81,12 +75,7 @@ user_input = st.text_input(
 if user_input:
     logger.info(f"Processing search for: '{user_input}'")
 
-    # --- Reset show_alternatives state on new search ---
-    st.session_state.show_alternatives = False
-    # ----------------------------------------------------
-
     # --- Update Search History (Keep this logic) ---
-    # ... (history update code remains the same) ...
     current_history = st.session_state.search_history
     if not current_history or user_input != current_history[0]:
         if user_input in current_history:
@@ -94,7 +83,8 @@ if user_input:
         current_history.insert(0, user_input)
         st.session_state.search_history = current_history[:3]
         logger.info(f"Updated search history: {st.session_state.search_history}")
-        st.session_state.history_selectbox_value = history_options[0] # Reset selectbox value state
+        st.session_state.history_selectbox_value = history_options[0]
+    # --- End History Update ---
 
     with st.spinner(f"Searching for '{user_input}'... (Check terminal/log file for details)"):
         inputs = {"drug_name": user_input}
@@ -124,7 +114,7 @@ if user_input:
                             st.markdown(f"- {ingredient}")
                     else:
                         st.info("No active ingredients specified.")
-                    st.write("")
+                    st.write("") # Add vertical space
 
                     # Inactive Ingredients Display (as bullet points)
                     st.markdown("#### ⚪ Inactive Ingredients")
@@ -143,7 +133,7 @@ if user_input:
                         category = classification.get('therapeutic_category', 'N/A')
                         allergens = classification.get('common_allergens', [])
                         st.markdown(f"**Therapeutic Category:** {category}")
-                        st.write("")
+                        st.write("") # Add vertical space
                         st.markdown("**Common Allergens Found:**")
                         if allergens and allergens != ["None"]:
                             for allergen in allergens:
@@ -156,41 +146,31 @@ if user_input:
                     else:
                         st.info("Analysis was not performed or failed.")
                         logger.warning(f"Ingredient analysis missing for '{user_input}'.")
-                    st.write("")
+                    st.write("") # Add vertical space
 
-                    # --- Suggested Alternatives (MODIFIED) ---
-                    st.markdown("#### 🔄 Suggested Alternatives (from Web Search)")
+                    # --- Suggested Alternatives Display (Always Visible) ---
+                    st.markdown("#### 🔄 Suggested Alternatives")
                     alternatives = final_state.get("alternatives")
-
-                    # Show button only if there are alternatives found OR if analysis succeeded (to indicate check happened)
-                    if alternatives or (classification and "error" not in classification):
-                        # Button to reveal alternatives
-                        if st.button("Show Suggested Alternatives"):
-                             st.session_state.show_alternatives = not st.session_state.show_alternatives
-
-                        # Display alternatives only if button was clicked
-                        if st.session_state.show_alternatives:
-                            if alternatives:
-                                # Define CSS style for the boxes with a fixed width
-                                css_style = """
-                                    display: block; width: 50%;
-                                    background-color: rgba(46, 139, 87, 0.4);
-                                    padding: 5px 10px; border-radius: 5px; margin-bottom: 5px;
-                                    color: inherit; text-decoration: none;
-                                """
-                                for alt in alternatives:
-                                    st.markdown(f'<div style="{css_style}">• {alt}</div>', unsafe_allow_html=True)
-                            else:
-                                st.info("No alternatives found via web search.")
-                                logger.info(f"No alternatives found for '{user_input}'.")
-                        else:
-                            # Optionally show a placeholder if button not clicked
-                            st.caption("Click the button above to see suggestions.")
-
+                    if alternatives:
+                        # Define CSS style for the boxes with a fixed width
+                        css_style = """
+                            display: block; width: 50%;
+                            background-color: rgba(46, 139, 87, 0.4);
+                            padding: 5px 10px; border-radius: 5px; margin-bottom: 5px;
+                            color: inherit; text-decoration: none;
+                        """
+                        # Display each alternative in its own styled div
+                        for alt in alternatives:
+                            st.markdown(f'<div style="{css_style}">• {alt}</div>', unsafe_allow_html=True)
                     else:
-                         # If no alternatives AND analysis failed, don't show the button/section
-                         st.info("Alternative suggestions require successful ingredient analysis.")
-                         logger.info(f"Skipping alternatives section for '{user_input}' due to lack of data/analysis.")
+                        # Display message if check ran but found none, or if analysis failed (needed for check)
+                        if classification and "error" not in classification:
+                            st.info("No alternatives found via web search.")
+                            logger.info(f"No alternatives found for '{user_input}'.")
+                        else:
+                             st.info("Alternative suggestions require successful ingredient analysis.")
+                             logger.info(f"Skipping alternatives section for '{user_input}' due to lack of data/analysis.")
+
 
             else:
                 st.error("An unknown error occurred during processing.")

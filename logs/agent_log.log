@@ -347,3 +347,54 @@
 2025-10-23 11:34:42,646 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Acetaminophen' ---
 2025-10-23 11:34:52,094 - INFO - graph.py:184 - Found alternatives: ['Panadol', 'Excedrin', 'Mapap', 'Calpol', 'Alvedon']
 2025-10-23 11:34:52,095 - INFO - app.py:103 - Graph execution finished for 'paracetamol'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-23 13:42:41,533 - INFO - app.py:25 - --- Logger Initialized ---
+2025-10-23 13:42:48,764 - INFO - app.py:76 - Processing search for: 'aspirin'
+2025-10-23 13:42:48,765 - INFO - app.py:85 - Updated search history: ['aspirin']
+2025-10-23 13:42:48,774 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-23 13:42:48,778 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-23 13:42:48,780 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'aspirin' ---
+2025-10-23 13:42:51,037 - WARNING - tools.py:59 - Low confidence match (score: 1.0152926445007324). Ignoring.
+2025-10-23 13:42:51,038 - INFO - graph.py:101 - Drug not found locally.
+2025-10-23 13:42:51,042 - INFO - graph.py:108 - --- NODE: Checking external FDA API ---
+2025-10-23 13:42:51,043 - INFO - tools.py:71 - --- TOOL: Querying FDA API for 'aspirin' ---
+2025-10-23 13:42:53,828 - INFO - tools.py:115 - Found match for 'aspirin' in FDA API.
+2025-10-23 13:42:53,833 - INFO - graph.py:115 - Drug found in FDA API.
+2025-10-23 13:42:53,835 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-23 13:42:53,836 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Active ingredient (in each tablet) Aspirin' ---
+2025-10-23 13:43:25,519 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-23 13:43:25,522 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-23 13:43:25,524 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Active ingredient (in each tablet) Aspirin' ---
+2025-10-23 13:43:35,259 - INFO - graph.py:184 - Found alternatives: ['Bayer Aspirin', 'Ecotrin', 'Bufferin', 'Ascriptin', 'Alka-Seltzer']
+2025-10-23 13:43:35,260 - INFO - app.py:93 - Graph execution finished for 'aspirin'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-23 13:44:33,975 - INFO - app.py:25 - --- Logger Initialized ---
+2025-10-23 13:44:41,522 - INFO - app.py:76 - Processing search for: 'paracetamol'
+2025-10-23 13:44:41,524 - INFO - app.py:85 - Updated search history: ['paracetamol']
+2025-10-23 13:44:41,530 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-23 13:44:41,532 - INFO - graph.py:93 - Normalized 'paracetamol' to 'Acetaminophen'
+2025-10-23 13:44:41,535 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-23 13:44:41,539 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'Acetaminophen' ---
+2025-10-23 13:44:43,298 - INFO - tools.py:56 - Found local match with score 0.40804848074913025
+2025-10-23 13:44:43,299 - INFO - graph.py:104 - Drug found locally.
+2025-10-23 13:44:43,300 - INFO - graph.py:127 - --- NODE: Classifying ingredients (with web search) ---
+2025-10-23 13:44:43,304 - INFO - tools.py:140 - --- TOOL: Performing web search for 'therapeutic category and common allergens for Acetaminophen' ---
+2025-10-23 13:45:06,196 - INFO - graph.py:149 - Successfully classified ingredients.
+2025-10-23 13:45:06,197 - INFO - graph.py:160 - --- NODE: Finding alternatives (with web search) ---
+2025-10-23 13:45:06,199 - INFO - tools.py:140 - --- TOOL: Performing web search for 'alternative brand names for Acetaminophen' ---
+2025-10-23 13:45:17,214 - INFO - graph.py:184 - Found alternatives: ['Panadol', 'Excedrin', 'Calpol', 'Aceta', 'Alvedon']
+2025-10-23 13:45:17,216 - INFO - app.py:93 - Graph execution finished for 'paracetamol'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'classification', 'alternatives', 'error'])
+2025-10-23 13:45:47,606 - INFO - app.py:76 - Processing search for: 'paracetamo'
+2025-10-23 13:45:47,608 - INFO - app.py:85 - Updated search history: ['paracetamo', 'paracetamol']
+2025-10-23 13:45:47,617 - INFO - graph.py:89 - --- NODE: Normalizing drug name ---
+2025-10-23 13:45:47,620 - INFO - graph.py:97 - --- NODE: Checking local RAG database ---
+2025-10-23 13:45:47,622 - INFO - tools.py:44 - --- TOOL: Checking local DB for 'paracetamo' ---
+2025-10-23 13:45:50,137 - WARNING - tools.py:59 - Low confidence match (score: 0.9042184352874756). Ignoring.
+2025-10-23 13:45:50,137 - INFO - graph.py:101 - Drug not found locally.
+2025-10-23 13:45:50,139 - INFO - graph.py:108 - --- NODE: Checking external FDA API ---
+2025-10-23 13:45:50,141 - INFO - tools.py:71 - --- TOOL: Querying FDA API for 'paracetamo' ---
+2025-10-23 13:46:02,558 - ERROR - tools.py:123 - FDA API request timed out for 'paracetamo'
+2025-10-23 13:46:02,559 - WARNING - graph.py:112 - FDA API check failed or returned no ingredients: FDA API request timed out.
+2025-10-23 13:46:02,560 - WARNING - graph.py:213 - Decision: FDA API failed or returned no ingredients, handling final error.
+2025-10-23 13:46:02,561 - WARNING - graph.py:119 - --- NODE: Handling 'Not Found' after checking sources ---
+2025-10-23 13:46:02,561 - ERROR - graph.py:123 - Sorry, the drug 'paracetamo' could not be found with ingredients in local DB or FDA database. Last error: FDA API request timed out.
+2025-10-23 13:46:02,562 - INFO - app.py:93 - Graph execution finished for 'paracetamo'. Final State keys: dict_keys(['drug_name', 'original_drug_name', 'data', 'error'])
+2025-10-23 13:46:02,563 - ERROR - app.py:100 - Final error state for 'paracetamo': Sorry, the drug 'paracetamo' could not be found with ingredients in local DB or FDA database. Last error: FDA API request timed out.
